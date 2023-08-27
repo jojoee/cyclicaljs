@@ -1,0 +1,24 @@
+# IDE & editor
+.idea
+.vscode
+
+# dependency
+node_modules
+
+# test
+coverage
+.nyc_output
+lighthouse
+*.report.dom.html
+.stryker-tmp
+reports
+
+# OS
+.DS_Store
+
+# lock
+yarn.lock
+package-lock.json
+
+# dist
+index.d.ts

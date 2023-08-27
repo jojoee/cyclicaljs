@@ -1,0 +1,23 @@
+# IDE & editor
+.idea
+.vscode
+.editorconfig
+
+# test
+codecov.yaml
+misc
+reports
+coverage
+**/**/*.test.js
+
+# CI
+.github
+
+# example
+example
+
+# others
+index.html
+src/
+stryker.conf.json
+tsconfig.json
