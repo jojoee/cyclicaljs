@@ -19,6 +19,7 @@ function encode (items, n) {
 }
 
 /* istanbul ignore next */
+// stryker-mutator disable next
 if (typeof module !== 'undefined' &&
   module.exports != null) {
   module.exports = {
