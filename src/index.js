@@ -4,7 +4,7 @@
  * - encoding month number: 0-11
  *
  * @public
- * @param {Array.number} items item must between 0 to n-1 for e.g. [0, 1, 2, ...]
+ * @param {Array<number>} items item must between 0 to n-1 for e.g. [0, 1, 2, ...]
  * @param {number} n maximum number of it e.g. 12 for mouth number, 24 for hour number
  * @returns {object} return as an object with sines and coses attributes
  */
