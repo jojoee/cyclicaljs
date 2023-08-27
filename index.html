@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cyclicaljs</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <script src="https://cdn.plot.ly/plotly-2.26.0.min.js" charset="utf-8"></script>
+  <style>
+    body {
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h2>cyclicaljs</h2>
+      <hr>
+
+      <h3>Encode Hours</h3>
+      <div id="encode-hours" class="u-full-width"></div>
+
+      <h3>Encode Days</h3>
+      <div id="encode-days" class="u-full-width"></div>
+    </div>
+  </div>
+  <script src="./src/index.js"></script>
+  <script>
+    const nRows = 24
+
+    // hours
+    const nHrs = 24
+    const hrs = [...Array(nRows).keys()].map(item => item % nHrs)
+    const encodedHrs = encode(hrs, nHrs)
+    const encodeHoursData = [{
+      x: encodedHrs.coses,
+      y: encodedHrs.sines,
+      mode: 'markers',
+      type: 'scatter'
+    }]
+    Plotly.newPlot('encode-hours', encodeHoursData)
+
+    // days
+    const nDays = 365
+    const days = [...Array(365).keys()].map(item => item % nDays)
+    const encodedDays = encode(days, nDays)
+    const encodedDaysData = [{
+      x: encodedDays.coses,
+      y: encodedDays.sines,
+      mode: 'markers',
+      type: 'scatter'
+    }]
+    Plotly.newPlot('encode-days', encodedDaysData)
+  </script>
+</body>
+
+</html>
