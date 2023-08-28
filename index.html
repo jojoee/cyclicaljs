@@ -12,6 +12,15 @@
     body {
       font-family: monospace;
     }
+
+    pre {
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+
+    .plot-container.plotly>.svg-container {
+      margin: auto;
+    }
   </style>
 </head>
 
@@ -21,40 +30,61 @@
       <h2>cyclicaljs</h2>
       <hr>
 
-      <h3>Encode Hours</h3>
-      <div id="encode-hours" class="u-full-width"></div>
+      <div class="example-box">
+        <h3>Example 1</h3>
+        <pre>
+          <code>const nItems1 = 24
+const items1 = Array.from({ length: 16 }, (_, i) => i).map(item => item % nItems1)
+const encodedItems1 = encode(items1, nItems1)</code>
+        </pre>
+        <div id="encode-example1" class="u-full-width"></div>
+      </div>
 
-      <h3>Encode Days</h3>
-      <div id="encode-days" class="u-full-width"></div>
+      <div class="example-box">
+        <h3>Example 2</h3>
+        <pre>
+          <code>const nItems2 = 52
+const items2 = Array.from({ length: 60 }, (_, i) => i).map(item => item % nItems2)
+const encodedItems2 = encode(items2, nItems2)</code>
+        </pre>
+        <div id="encode-example2" class="u-full-width"></div>
+      </div>
     </div>
   </div>
   <script src="./src/index.js"></script>
   <script>
-    const nRows = 24
+    const layout = {
+      font: { size: 14 },
+      width: 500,
+      height: 500,
+      xaxis: { range: [-1.2, 1.2] },
+      yaxis: { range: [-1.2, 1.2] }
+    }
+    const config = { responsive: true }
 
-    // hours
-    const nHrs = 24
-    const hrs = [...Array(nRows).keys()].map(item => item % nHrs)
-    const encodedHrs = encode(hrs, nHrs)
-    const encodeHoursData = [{
-      x: encodedHrs.coses,
-      y: encodedHrs.sines,
+    // example1
+    const nItems1 = 24
+    const items1 = Array.from({ length: 16 }, (_, i) => i).map(item => item % nItems1)
+    const encodedItems1 = encode(items1, nItems1)
+    const encodedItems1Data = [{
+      x: encodedItems1.coses,
+      y: encodedItems1.sines,
       mode: 'markers',
       type: 'scatter'
     }]
-    Plotly.newPlot('encode-hours', encodeHoursData)
+    Plotly.newPlot('encode-example1', encodedItems1Data, layout, config)
 
-    // days
-    const nDays = 365
-    const days = [...Array(365).keys()].map(item => item % nDays)
-    const encodedDays = encode(days, nDays)
-    const encodedDaysData = [{
-      x: encodedDays.coses,
-      y: encodedDays.sines,
+    // example2
+    const nItems2 = 52
+    const items2 = Array.from({ length: 60 }, (_, i) => i).map(item => item % nItems2)
+    const encodedItems2 = encode(items2, nItems2)
+    const encodedItems2Data = [{
+      x: encodedItems2.coses,
+      y: encodedItems2.sines,
       mode: 'markers',
       type: 'scatter'
     }]
-    Plotly.newPlot('encode-days', encodedDaysData)
+    Plotly.newPlot('encode-example2', encodedItems2Data, layout, config)
   </script>
 </body>
 
