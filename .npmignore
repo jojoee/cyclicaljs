@@ -1,14 +1,24 @@
 # IDE & editor
 .idea
 .vscode
-.editorconfig
+
+# dependency
+node_modules
 
 # test
-codecov.yaml
-misc
-reports
 coverage
-**/**/*.test.js
+.nyc_output
+lighthouse
+*.report.dom.html
+.stryker-tmp
+reports
+
+# OS
+.DS_Store
+
+# lock
+yarn.lock
+package-lock.json
 
 # CI
 .github
@@ -21,3 +31,6 @@ index.html
 src/
 stryker.conf.json
 tsconfig.json
+.editorconfig
+codecov.yaml
+**/**/*.test.js
